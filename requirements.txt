@@ -1,0 +1,5 @@
+functions-framework==3.5.0
+google-cloud-firestore==2.16.0
+requests==2.31.0
+pytz==2024.1
+
