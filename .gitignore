@@ -1,5 +1,8 @@
+# Git
 .git/
 .gcloudignore
+
+# Python
 __pycache__/
 *.pyc
 *.pyo
@@ -10,10 +13,15 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+
+# Virtual Environment
 .env
 .venv
 venv/
 ENV/
+env/
+
+# IDE
 .DS_Store
 .idea/
 .vscode/
@@ -21,4 +29,7 @@ ENV/
 *.swo
 *~
 .cursor/
+
+# Local files
+*.log
 

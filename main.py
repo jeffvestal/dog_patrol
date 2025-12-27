@@ -105,26 +105,23 @@ def determine_activity_name(start_date_local: str) -> str:
     Determine activity name based on time of day.
     
     Time ranges:
-    - 04:00 - 10:59: Morning Dog Patrol 🐕‍🦺
-    - 11:00 - 13:59: Lunch Break Sniffari 👃
-    - 14:00 - 03:59: Evening Dog Patrol 🐕‍🦺
+    - 04:00 - 10:59: Morning Shakeout 🐕‍🦺
+    - 11:00 - 13:59: Lunch Break Sniffari 👃🐕‍🦺
+    - 14:00 - 03:59: Evening Patrol 🐕‍🦺
     """
     # Parse the ISO format datetime string from Strava
+    # start_date_local is ALREADY in local time, no conversion needed
     # Example: "2024-12-26T07:30:00Z"
-    dt = datetime.fromisoformat(start_date_local.replace("Z", "+00:00"))
-    
-    # Convert to configured timezone
-    tz = pytz.timezone(TIMEZONE)
-    local_dt = dt.astimezone(tz)
-    hour = local_dt.hour
+    dt = datetime.fromisoformat(start_date_local.replace("Z", ""))
+    hour = dt.hour
     
     # Determine time range
     if 4 <= hour < 11:
-        return "Morning Dog Patrol 🐕‍🦺"
+        return "Morning Shakeout 🐕‍🦺"
     elif 11 <= hour < 14:
-        return "Lunch Break Sniffari 👃"
+        return "Lunch Break Sniffari 👃🐕‍🦺"
     else:  # 14:00 - 03:59 (14-23 and 0-3)
-        return "Evening Dog Patrol 🐕‍🦺"
+        return "Evening Patrol 🐕‍🦺"
 
 
 def update_activity_name(activity_id: int, new_name: str, access_token: str) -> None:
